@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace fcb
 {
@@ -36,12 +32,6 @@ namespace fcb
                     CoderAllFileInAllFolders(StartUp, CoderStatus.DecryptFile);
                 }
             }
-            //EncryptAllFileInAllFolders(@"D:\_internete");
-            //DecryptAllFileInAllFolders(@"D:\_internete");
-
-            //filecoder.EncryptFile(@"D:\_internete\result.jpeg");
-            //filecoder.DecryptFile(@"D:\_internete\result.jpeg");
-
         }
 
         enum CoderStatus

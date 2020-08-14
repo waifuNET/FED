@@ -12,7 +12,7 @@ namespace fcb
 
         public string alph = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        List<char> alph_ru_ru_list = new List<char>();
+        List<char> alph_list = new List<char>();
         List<string> DoubleCode = new List<string>();
 
         Random rand = new Random();
@@ -23,22 +23,20 @@ namespace fcb
             _complexity = complexity;
 
             rand = new Random(_key);
-
             foreach (char ch in alph)
             {
-                alph_ru_ru_list.Add(ch);
+                alph_list.Add(ch);
             }
 
             string done = "";
-
-            for (int j = 0; j < alph_ru_ru_list.Count; j++)
+            for (int j = 0; j < alph_list.Count; j++)
             {
                 do
                 {
                     done = "";
                     for (int i = 0; i < _complexity; i++)
                     {
-                        done += alph_ru_ru_list[rand.Next(0, alph_ru_ru_list.Count)];
+                        done += alph_list[rand.Next(0, alph_list.Count)];
                     }
                 } while (DoubleCode.Exists(x => x == done));
                 DoubleCode.Add(done);
@@ -53,13 +51,12 @@ namespace fcb
             string CriptText = "";
             for (int j = 0; j < text.Length; j++)
             {
-                for (int i = 0; i < alph_ru_ru_list.Count; i++)
+                for (int i = 0; i < alph_list.Count; i++)
                 {
-                    if (text[j] == alph_ru_ru_list[i])
+                    if (text[j] == alph_list[i])
                         CriptText += DoubleCode[i];
                 }
             }
-
             return CriptText;
         }
         public string Decrypt(string text)
@@ -68,7 +65,6 @@ namespace fcb
 
             string buffer = "";
             List<string> CriptCode = new List<string>();
-
             foreach (char i in text)
             {
                 buffer = buffer += i;
@@ -85,10 +81,9 @@ namespace fcb
                 for (int i = 0; i < DoubleCode.Count; i++)
                 {
                     if (CriptCode[j] == DoubleCode[i])
-                        CriptText += alph_ru_ru_list[i];
+                        CriptText += alph_list[i];
                 }
             }
-
             return CriptText;
         }
 
